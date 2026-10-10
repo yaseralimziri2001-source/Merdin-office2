@@ -291,14 +291,10 @@ const CONFIG = {
 
   const MSG = { ku:"سلاڤ، دڤێت پرسیارێ بکەم ل سەر: ", ar:"مرحباً، أريد الاستفسار عن: ", en:"Hello, I'd like to ask about: " };
   const HINT = { ku:"ب واتسئاپێ داخوازێ بکە", ar:"اطلب عبر واتساب", en:"Order via WhatsApp" };
-  // ژمارێن کوردی (٠١٢٣٤٥٦٧٨٩) ب تنێ دەمێ زمان کوردی بیت
-  function toLangDigits(s, L){
-    if(L !== "ku") return s;
-    return s.replace(/\d/g, d => "٠١٢٣٤٥٦٧٨٩"[d]);
-  }
   function workCard(it, i, L){
     const href = waLink + "?text=" + encodeURIComponent(MSG[L] + it[L]);
     return `<a class="card work" href="${href}" target="_blank" rel="noopener" style="animation-delay:${i*0.09}s">
+      <span class="num">${String(i+1).padStart(2,"0")}</span>
       <span class="ci">${it.icon}</span>
       <span class="wt"><span class="ct">${it[L]}</span><span class="hint">${HINT[L]}</span></span>
       <span class="arr">${ICONS.arr}</span></a>`;
